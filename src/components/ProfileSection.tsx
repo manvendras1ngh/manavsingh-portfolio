@@ -11,12 +11,12 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
     >
       <header className="flex justify-between items-center mb-12">
         <a
-          href="https://manavsingh.in"
+          href="https://dev.manavsingh.in"
           className={`text-lg underline font-light cursor-pointer ${
             isDarkMode ? "text-white" : "text-gray-900"
           }`}
         >
-          manavsingh.in
+          dev.manavsingh.in
         </a>
         <div className="flex items-center gap-4">
           <button
