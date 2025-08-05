@@ -4,32 +4,6 @@ import type { ProjectsSectionProps } from "../utils/types";
 const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
   return (
     <div className="p-8 h-full overflow-y-auto">
-      {/* Search and Filter */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <div className="relative flex-1">
-          <input
-            type="text"
-            placeholder="search projects"
-            className={`w-full ${
-              isDarkMode
-                ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-500"
-            } border rounded-lg py-2 pl-4 pr-4 focus:outline-none focus:ring-2 focus:ring-gray-400`}
-          />
-        </div>
-        <select
-          className={`${
-            isDarkMode
-              ? "bg-gray-700 border-gray-600 text-white"
-              : "bg-gray-50 border-gray-200 text-gray-700"
-          } border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-gray-400`}
-        >
-          <option>Featured</option>
-          <option>Latest</option>
-          <option>Oldest</option>
-        </select>
-      </div>
-
       {/* Projects List */}
       <div className="space-y-12">
         {projects.map((project) => (
