@@ -14,14 +14,14 @@ const Portfolio = () => {
   return (
     <div
       className={`min-h-screen ${
-        isDarkMode ? "bg-gray-900" : "bg-gray-50"
+        isDarkMode ? "bg-zinc-900" : "bg-zinc-50"
       } p-4 md:p-6 lg:p-8`}
     >
       <div
         className={`lg:h-[calc(100vh-64px)] ${
-          isDarkMode ? "bg-gray-800" : "bg-white"
+          isDarkMode ? "bg-black" : "bg-white"
         } rounded-lg border ${
-          isDarkMode ? "border-gray-700" : "border-gray-200"
+          isDarkMode ? "border-zinc-800" : "border-zinc-200"
         } lg:overflow-hidden`}
       >
         <div className="h-full">
@@ -94,8 +94,8 @@ const Portfolio = () => {
       <button
         className={`fixed bottom-6 right-6 ${
           isDarkMode
-            ? "bg-white text-gray-900 hover:bg-gray-100"
-            : "bg-gray-900 text-white hover:bg-gray-800"
+            ? "bg-white text-black hover:bg-zinc-100"
+            : "bg-black text-white hover:bg-zinc-800"
         } p-4 rounded-full shadow-lg transition-colors`}
       >
         <MessageCircle className="w-6 h-6" />

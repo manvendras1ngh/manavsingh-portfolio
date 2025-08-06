@@ -8,12 +8,12 @@ const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationPro
   return (
     <div
       className={`p-4 ${
-        isDarkMode ? "bg-gray-800" : "bg-white"
-      } border-b ${isDarkMode ? "border-gray-700" : "border-gray-200"}`}
+        isDarkMode ? "bg-black" : "bg-white"
+      } border-b ${isDarkMode ? "border-zinc-700" : "border-gray-200"}`}
     >
       <div
         className={`${
-          isDarkMode ? "bg-gray-700" : "bg-gray-100"
+          isDarkMode ? "bg-zinc-800" : "bg-gray-100"
         } p-1.5 rounded-lg flex gap-1.5`}
       >
         <button
@@ -22,7 +22,7 @@ const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationPro
             activeTab === "projects"
               ? `${
                   isDarkMode
-                    ? "bg-gray-800 text-white"
+                    ? "bg-zinc-900 text-white"
                     : "bg-white text-gray-900"
                 } shadow-sm`
               : `${
@@ -40,7 +40,7 @@ const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationPro
             activeTab === "experience"
               ? `${
                   isDarkMode
-                    ? "bg-gray-800 text-white"
+                    ? "bg-zinc-900 text-white"
                     : "bg-white text-gray-900"
                 } shadow-sm`
               : `${

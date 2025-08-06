@@ -10,8 +10,10 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
           <div
             key={project.id}
             className={`border ${
-              isDarkMode ? "border-gray-700" : "border-gray-200"
-            } rounded-lg p-6`}
+              isDarkMode ? "border-zinc-700" : "border-gray-200"
+            } rounded-lg p-6 ${
+              isDarkMode ? "bg-black" : "bg-white"
+            }`}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="md:col-span-2">
@@ -43,7 +45,7 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
                         key={index}
                         className={`${
                           isDarkMode
-                            ? "bg-gray-700 text-gray-300"
+                            ? "bg-zinc-800 text-gray-300"
                             : "bg-gray-100 text-gray-700"
                         } text-xs font-medium px-2.5 py-1 rounded-full`}
                       >

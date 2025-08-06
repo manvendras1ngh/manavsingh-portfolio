@@ -12,8 +12,10 @@ const ExperienceSection = ({
           <div
             key={exp.id}
             className={`border ${
-              isDarkMode ? "border-gray-700" : "border-gray-200"
-            } rounded-lg p-6`}
+              isDarkMode ? "border-zinc-700" : "border-gray-200"
+            } rounded-lg p-6 ${
+              isDarkMode ? "bg-black" : "bg-white"
+            }`}
           >
             <div className="flex items-start justify-between mb-3">
               <div>

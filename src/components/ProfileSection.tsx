@@ -24,7 +24,7 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
   return (
     <div
       className={`p-8 lg:p-12 h-full overflow-y-auto ${
-        isDarkMode ? "border-gray-700" : "border-gray-200"
+        isDarkMode ? "border-zinc-700" : "border-gray-200"
       } lg:border-r`}
     >
       <header className="flex justify-between items-center mb-12">
@@ -115,8 +115,8 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
           <ScheduleCall
             className={`${
               isDarkMode
-                ? "bg-white text-gray-900 hover:bg-gray-100"
-                : "bg-gray-900 text-white hover:bg-gray-800"
+                ? "bg-white text-black hover:bg-gray-100"
+                : "bg-black text-white hover:bg-gray-800"
             } px-5 py-2.5 rounded-lg font-medium transition-colors inline-block cursor-pointer`}
           />
           <a
@@ -125,7 +125,7 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
             rel="noopener noreferrer"
             className={`${
               isDarkMode
-                ? "bg-gray-700 text-gray-100 hover:bg-gray-600"
+                ? "bg-zinc-800 text-gray-100 hover:bg-zinc-700"
                 : "bg-gray-100 text-gray-800 hover:bg-gray-200"
             } px-5 py-2.5 rounded-lg font-medium transition-colors inline-block`}
           >
