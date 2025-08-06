@@ -1,8 +1,26 @@
-import { Github, Mail, Linkedin, Rss, Sun, Moon } from "lucide-react";
+import {
+  Github,
+  Mail,
+  Linkedin,
+  Rss,
+  Sun,
+  Moon,
+  Copy,
+  Check,
+} from "lucide-react";
+import { useState } from "react";
 import type { ProfileSectionProps } from "../utils/types";
 import ScheduleCall from "./ScheduleCall";
 
 const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div
       className={`p-8 lg:p-12 h-full overflow-y-auto ${
@@ -10,14 +28,34 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
       } lg:border-r`}
     >
       <header className="flex justify-between items-center mb-12">
-        <a
-          href="https://dev.manavsingh.in"
-          className={`text-lg underline font-light cursor-pointer ${
-            isDarkMode ? "text-white" : "text-gray-900"
-          }`}
-        >
-          dev.manavsingh.in
-        </a>
+        <div className="flex items-center gap-1">
+          <a
+            href="https://dev.manavsingh.in"
+            className={`text-mds underline font-light cursor-pointer ${
+              isDarkMode ? "text-white" : "text-gray-900"
+            }`}
+          >
+            dev.manavsingh.in
+          </a>
+          <button
+            onClick={() => copyToClipboard("dev.manavsingh.in")}
+            className={`cursor-pointer p-1 transition-colors duration-200 ${
+              copied
+                ? isDarkMode
+                  ? "text-green-400"
+                  : "text-green-600"
+                : isDarkMode
+                ? "text-gray-400"
+                : "text-gray-500"
+            }`}
+          >
+            {copied ? (
+              <Check className="w-3 h-3" />
+            ) : (
+              <Copy className="w-3 h-3" />
+            )}
+          </button>
+        </div>
         <div className="flex items-center gap-4">
           <button
             className={`${
