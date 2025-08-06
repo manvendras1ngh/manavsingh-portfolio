@@ -4,12 +4,16 @@ interface TabNavigationProps {
   isDarkMode: boolean;
 }
 
-const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationProps) => {
+const TabNavigation = ({
+  activeTab,
+  setActiveTab,
+  isDarkMode,
+}: TabNavigationProps) => {
   return (
     <div
-      className={`p-4 ${
-        isDarkMode ? "bg-black" : "bg-white"
-      } border-b ${isDarkMode ? "border-zinc-700" : "border-gray-200"}`}
+      className={`p-4 ${isDarkMode ? "bg-black" : "bg-white"} border-b ${
+        isDarkMode ? "border-zinc-700" : "border-gray-200"
+      }`}
     >
       <div
         className={`${
@@ -18,7 +22,7 @@ const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationPro
       >
         <button
           onClick={() => setActiveTab("projects")}
-          className={`flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all ${
+          className={`cursor-pointer flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all ${
             activeTab === "projects"
               ? `${
                   isDarkMode
@@ -36,7 +40,7 @@ const TabNavigation = ({ activeTab, setActiveTab, isDarkMode }: TabNavigationPro
         </button>
         <button
           onClick={() => setActiveTab("experience")}
-          className={`flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all ${
+          className={`cursor-pointer flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all ${
             activeTab === "experience"
               ? `${
                   isDarkMode
