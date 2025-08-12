@@ -15,7 +15,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
       "Shadcn UI",
     ],
-    image: "/src/assets/grindGear.png",
+    image: "/grindGear.png",
     links: {
       website: "https://grind-gears.vercel.app",
       github: "https://github.com/manvendras1ngh/grindGears",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
       "Shadcn UI",
     ],
-    image: "/src/assets/anvaya.png",
+    image: "/anvaya.png",
     links: {
       website: "https://anvaya-crm-jet.vercel.app",
       github: "https://github.com/manvendras1ngh/anvaya-crm-frontend",
