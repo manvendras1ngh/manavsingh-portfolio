@@ -121,7 +121,7 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
                 <img
                   src={project.image}
                   alt={`${project.title} screenshot`}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-48 object-cover object-left rounded-lg"
                 />
               </div>
             </div>
