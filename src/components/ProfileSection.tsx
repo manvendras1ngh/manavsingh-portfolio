@@ -63,7 +63,7 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
               isDarkMode
                 ? "text-gray-400 hover:text-white"
                 : "text-gray-600 hover:text-gray-900"
-            } transition-colors`}
+            } transition-colors cursor-pointer`}
           >
             {isDarkMode ? (
               <Sun className="w-5 h-5" />
