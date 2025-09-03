@@ -1,13 +1,4 @@
-import {
-  Github,
-  Mail,
-  Linkedin,
-  Rss,
-  Sun,
-  Moon,
-  Copy,
-  Check,
-} from "lucide-react";
+import { Github, Mail, Linkedin, Sun, Moon, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import type { ProfileSectionProps } from "../utils/types";
 import ScheduleCall from "./ScheduleCall";
