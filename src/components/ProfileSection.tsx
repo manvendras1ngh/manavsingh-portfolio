@@ -57,15 +57,15 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
           </button>
         </div>
         <div className="flex items-center gap-4">
-          <button
+          {/* <button
             className={`${
               isDarkMode
                 ? "text-gray-400 hover:text-white"
                 : "text-gray-600 hover:text-gray-900"
             } transition-colors`}
           >
-            {/* <Rss className="w-5 h-5" /> */}
-          </button>
+             <Rss className="w-5 h-5" /> 
+          </button> */}
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             className={`${
