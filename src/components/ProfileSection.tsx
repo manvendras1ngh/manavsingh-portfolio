@@ -64,7 +64,7 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
                 : "text-gray-600 hover:text-gray-900"
             } transition-colors`}
           >
-            <Rss className="w-5 h-5" />
+            {/* <Rss className="w-5 h-5" /> */}
           </button>
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
@@ -120,7 +120,7 @@ const ProfileSection = ({ isDarkMode, setIsDarkMode }: ProfileSectionProps) => {
             } px-5 py-2.5 rounded-lg font-medium transition-colors inline-block cursor-pointer`}
           />
           <a
-            href="https://drive.google.com/file/d/125DAtYoO6DaMiCKW7gX5gyVtwoDQQ48o/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1NiQnAYpY1Jdca3gYSc999SuGRrfCHGRV/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className={`${
