@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { useState, useEffect } from "react";
 import ProfileSection from "./ProfileSection";
 import ProjectsSection from "./ProjectsSection";
 import ExperienceSection from "./ExperienceSection";
@@ -9,97 +8,56 @@ import { experience } from "../utils/experience";
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("projects");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDark, setIsDark] = useState(
+    () => window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "bg-zinc-900" : "bg-zinc-50"
-      } p-4 md:p-6 lg:p-8`}
-    >
-      <div
-        className={`lg:h-[calc(100vh-64px)] ${
-          isDarkMode ? "bg-black" : "bg-white"
-        } rounded-lg border ${
-          isDarkMode ? "border-zinc-800" : "border-zinc-200"
-        } lg:overflow-hidden`}
-      >
-        <div className="h-full">
-          {/* Mobile Layout */}
-          <div className="lg:hidden">
-            <ProfileSection
-              isDarkMode={isDarkMode}
-              setIsDarkMode={setIsDarkMode}
-            />
-            <TabNavigation
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              isDarkMode={isDarkMode}
-            />
-            <div>
-              {activeTab === "projects" && (
-                <ProjectsSection isDarkMode={isDarkMode} projects={projects} />
-              )}
-              {activeTab === "experience" && (
-                <ExperienceSection
-                  isDarkMode={isDarkMode}
-                  experience={experience}
-                />
-              )}
-            </div>
-          </div>
+    <div className="min-h-screen bg-base font-sans p-3 md:p-5 lg:p-6">
+      <div className="lg:h-[calc(100vh-48px)] bg-surface rounded-lg border border-edge lg:overflow-hidden">
+        {/* Mobile */}
+        <div className="lg:hidden">
+          <ProfileSection
+            isDark={isDark}
+            onToggleTheme={() => setIsDark(!isDark)}
+          />
+          <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+          {activeTab === "projects" && <ProjectsSection projects={projects} />}
+          {activeTab === "experience" && (
+            <ExperienceSection experience={experience} />
+          )}
+        </div>
 
-          {/* Desktop Layout */}
-          <div className="hidden lg:grid lg:grid-cols-5 lg:h-full">
-            {/* Left Section - Profile */}
-            <div className="lg:col-span-2 lg:h-full lg:overflow-hidden">
-              <ProfileSection
-                isDarkMode={isDarkMode}
-                setIsDarkMode={setIsDarkMode}
+        {/* Desktop */}
+        <div className="hidden lg:grid lg:grid-cols-5 lg:h-full">
+          <div className="lg:col-span-2 lg:h-full lg:overflow-hidden border-r border-edge">
+            <ProfileSection
+              isDark={isDark}
+              onToggleTheme={() => setIsDark(!isDark)}
+            />
+          </div>
+          <div className="lg:col-span-3 lg:h-full lg:flex lg:flex-col overflow-hidden">
+            <div className="shrink-0">
+              <TabNavigation
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
               />
             </div>
-
-            {/* Right Section - Projects/Experience */}
-            <div className="lg:col-span-3 lg:h-full lg:flex lg:flex-col overflow-auto">
-              {/* Tab Navigation */}
-              <div className="lg:flex-shrink-0">
-                <TabNavigation
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-                  isDarkMode={isDarkMode}
-                />
-              </div>
-
-              {/* Content Area */}
-              <div className="lg:flex-1 lg:overflow-hidden">
-                {activeTab === "projects" && (
-                  <ProjectsSection
-                    isDarkMode={isDarkMode}
-                    projects={projects}
-                  />
-                )}
-                {activeTab === "experience" && (
-                  <ExperienceSection
-                    isDarkMode={isDarkMode}
-                    experience={experience}
-                  />
-                )}
-              </div>
+            <div className="flex-1 min-h-0 overflow-auto">
+              {activeTab === "projects" && (
+                <ProjectsSection projects={projects} />
+              )}
+              {activeTab === "experience" && (
+                <ExperienceSection experience={experience} />
+              )}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Floating Chat Button */}
-      <button
-        className={`fixed bottom-6 right-6 ${
-          isDarkMode
-            ? "bg-white text-black hover:bg-zinc-100"
-            : "bg-black text-white hover:bg-zinc-800"
-        } p-4 rounded-full shadow-lg transition-colors`}
-      >
-        <MessageCircle className="w-6 h-6" />
-      </button>
     </div>
   );
 };

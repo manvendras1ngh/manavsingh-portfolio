@@ -1,58 +1,44 @@
-import { Calendar } from "lucide-react";
-import type { ExperienceSectionProps } from "../utils/types";
+import type { Experience } from "../utils/types";
 
-const ExperienceSection = ({
-  isDarkMode,
-  experience,
-}: ExperienceSectionProps) => {
+const ExperienceSection = ({ experience }: { experience: Experience[] }) => {
   return (
-    <div className="p-8 h-full overflow-y-auto">
-      <div className="space-y-8">
-        {experience.map((exp) => (
-          <div
+    <div className="p-6 lg:p-8 h-full overflow-y-auto">
+      <div className="space-y-3">
+        {experience.map((exp, i) => (
+          <article
             key={exp.id}
-            className={`border ${
-              isDarkMode ? "border-zinc-700" : "border-gray-200"
-            } rounded-lg p-6 ${
-              isDarkMode ? "bg-black" : "bg-white"
-            }`}
+            className="border border-edge rounded-lg p-5 bg-surface animate-in"
+            style={{ animationDelay: `${i * 60}ms` }}
           >
-            <div className="flex items-start justify-between mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
               <div>
-                <h3
-                  className={`text-xl font-semibold ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {exp.company}
-                </h3>
-                <p
-                  className={`${
-                    isDarkMode ? "text-gray-400" : "text-gray-800"
-                  }`}
-                >
-                  {exp.role}
-                </p>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-base font-semibold text-primary">
+                    {exp.company}
+                  </h3>
+                  {exp.period.includes("Present") && (
+                    <span className="bg-emerald-500/10 text-emerald-500 text-[11px] font-mono px-1.5 py-0.5 rounded">
+                      current
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-secondary mt-0.5">{exp.role}</p>
               </div>
-              <span
-                className={`text-sm ${
-                  isDarkMode ? "text-gray-400" : "text-gray-500"
-                } flex items-center gap-1`}
-              >
-                <Calendar className="w-4 h-4" />
+              <span className="font-mono text-xs text-muted shrink-0">
                 {exp.period}
               </span>
             </div>
-            <ul
-              className={`text-sm ${
-                isDarkMode ? "text-gray-300" : "text-gray-500"
-              }`}
-            >
-              {exp.description.map((detail) => (
-                <li className="list-disc ml-6">{detail}</li>
+            <ul className="space-y-1.5">
+              {exp.description.map((detail, j) => (
+                <li key={j} className="flex gap-2.5 text-sm text-secondary">
+                  <span className="text-muted select-none shrink-0 leading-relaxed">
+                    &ndash;
+                  </span>
+                  <span className="leading-relaxed">{detail}</span>
+                </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </div>

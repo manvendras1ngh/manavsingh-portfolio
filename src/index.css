@@ -1,1 +1,91 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-base: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-raised: var(--c-raised);
+  --color-edge: var(--c-edge);
+  --color-primary: var(--c-primary);
+  --color-secondary: var(--c-secondary);
+  --color-muted: var(--c-muted);
+  --color-inverse: var(--c-inverse);
+}
+
+/* ── Light theme (default) ── */
+:root {
+  --c-base: #fafafa;
+  --c-surface: #ffffff;
+  --c-raised: #f4f4f5;
+  --c-edge: #e4e4e7;
+  --c-primary: #18181b;
+  --c-secondary: #52525b;
+  --c-muted: #a1a1aa;
+  --c-inverse: #fafafa;
+}
+
+/* ── Dark theme ── */
+.dark {
+  --c-base: #09090b;
+  --c-surface: #0f0f12;
+  --c-raised: #18181b;
+  --c-edge: #27272a;
+  --c-primary: #fafafa;
+  --c-secondary: #a1a1aa;
+  --c-muted: #52525b;
+  --c-inverse: #09090b;
+}
+
+/* ── Base ── */
+html {
+  background-color: var(--c-base);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: var(--c-primary);
+  color: var(--c-inverse);
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-edge) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--c-edge);
+  border-radius: 3px;
+}
+
+/* ── Entrance animation ── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fade-up 0.4s ease-out both;
+}

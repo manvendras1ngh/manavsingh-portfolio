@@ -1,71 +1,51 @@
 import { Github, Globe, Linkedin, Play } from "lucide-react";
-import type { ProjectsSectionProps } from "../utils/types";
+import type { Project } from "../utils/types";
 
-const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
+const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   return (
-    <div className="p-8 h-full overflow-y-auto">
-      {/* Projects List */}
-      <div className="space-y-12">
-        {projects.map((project) => (
-          <div
+    <div className="p-6 lg:p-8 h-full overflow-y-auto">
+      <div className="space-y-3">
+        {projects.map((project, i) => (
+          <article
             key={project.id}
-            className={`border ${
-              isDarkMode ? "border-zinc-700" : "border-gray-200"
-            } rounded-lg p-6 ${isDarkMode ? "bg-black" : "bg-white"}`}
+            className="group border border-edge rounded-lg p-5 bg-surface hover:border-muted transition-colors animate-in"
+            style={{ animationDelay: `${i * 60}ms` }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <div className="md:col-span-2">
-                <h3
-                  className={`text-xl font-semibold mb-1 ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {project.title}
-                  <span
-                    className={`text-sm font-normal ${
-                      isDarkMode ? "text-gray-400" : "text-gray-500"
-                    } ml-3`}
-                  >
+                <div className="flex items-baseline gap-3 mb-2">
+                  <h3 className="text-base font-semibold text-primary">
+                    {project.title}
+                  </h3>
+                  <span className="font-mono text-xs text-muted">
                     {project.date}
                   </span>
-                </h3>
-                <p
-                  className={`mt-3 leading-relaxed ${
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
-                >
+                </div>
+                <p className="text-sm text-secondary leading-relaxed mb-3">
                   {project.description}
                 </p>
                 {project.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
                     {project.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className={`${
-                          isDarkMode
-                            ? "bg-zinc-800 text-gray-300"
-                            : "bg-gray-100 text-gray-700"
-                        } text-xs font-medium px-2.5 py-1 rounded-full`}
+                        className="font-mono bg-raised text-muted text-[11px] px-2 py-0.5 rounded"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 )}
-                <div className="mt-4 flex items-center gap-4">
+                <div className="flex items-center gap-1">
                   {project.links.website && (
                     <a
                       href={project.links.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`${
-                        isDarkMode
-                          ? "text-gray-400 hover:text-white"
-                          : "text-gray-500 hover:text-gray-900"
-                      } transition-colors`}
-                      title="Visit Website"
+                      className="p-1.5 rounded text-muted hover:text-primary hover:bg-raised transition-all"
+                      title="Website"
                     >
-                      <Globe className="w-5 h-5" />
+                      <Globe className="w-4 h-4" />
                     </a>
                   )}
                   {project.links.github && (
@@ -73,14 +53,10 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
                       href={project.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`${
-                        isDarkMode
-                          ? "text-gray-400 hover:text-white"
-                          : "text-gray-500 hover:text-gray-900"
-                      } transition-colors`}
-                      title="View GitHub Repository"
+                      className="p-1.5 rounded text-muted hover:text-primary hover:bg-raised transition-all"
+                      title="Source"
                     >
-                      <Github className="w-5 h-5" />
+                      <Github className="w-4 h-4" />
                     </a>
                   )}
                   {project.links.demo && (
@@ -88,14 +64,10 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
                       href={project.links.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`${
-                        isDarkMode
-                          ? "text-gray-400 hover:text-white"
-                          : "text-gray-500 hover:text-gray-900"
-                      } transition-colors`}
-                      title="View Demo"
+                      className="p-1.5 rounded text-muted hover:text-primary hover:bg-raised transition-all"
+                      title="Demo"
                     >
-                      <Play className="w-5 h-5" />
+                      <Play className="w-4 h-4" />
                     </a>
                   )}
                   {project.links.linkedin && (
@@ -103,14 +75,10 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
                       href={project.links.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`${
-                        isDarkMode
-                          ? "text-gray-400 hover:text-white"
-                          : "text-gray-500 hover:text-gray-900"
-                      } transition-colors`}
-                      title="View on LinkedIn"
+                      className="p-1.5 rounded text-muted hover:text-primary hover:bg-raised transition-all"
+                      title="LinkedIn"
                     >
-                      <Linkedin className="w-5 h-5" />
+                      <Linkedin className="w-4 h-4" />
                     </a>
                   )}
                 </div>
@@ -118,12 +86,12 @@ const ProjectsSection = ({ isDarkMode, projects }: ProjectsSectionProps) => {
               <div className="md:col-span-1">
                 <img
                   src={project.image}
-                  alt={`${project.title} screenshot`}
-                  className="w-full h-48 object-cover object-left rounded-lg"
+                  alt={project.title}
+                  className="w-full h-36 object-cover object-left rounded border border-edge"
                 />
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

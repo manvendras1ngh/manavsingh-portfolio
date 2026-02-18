@@ -20,18 +20,3 @@ export interface Experience {
   period: string;
   description: string[];
 }
-
-export interface ProfileSectionProps {
-  isDarkMode: boolean;
-  setIsDarkMode: (value: boolean) => void;
-}
-
-export interface ProjectsSectionProps {
-  isDarkMode: boolean;
-  projects: Project[];
-}
-
-export interface ExperienceSectionProps {
-  isDarkMode: boolean;
-  experience: Experience[];
-}
