@@ -14,7 +14,9 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <div className="md:col-span-2">
                 <div className="flex items-baseline gap-3 mb-2">
-                  <h3 className="text-base font-semibold">{project.title}</h3>
+                  <h3 className="font-semibold text-primary">
+                    {project.title}
+                  </h3>
                   <span className="font-mono text-xs text-muted">
                     {project.date}
                   </span>

@@ -27,7 +27,7 @@ const ExperienceSection = ({ experience }: { experience: Experience[] }) => {
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-semibold ">{exp.company}</h3>
+                  <h3 className="font-semibold text-primary">{exp.company}</h3>
                   {exp.period.includes("Present") && (
                     <span className="bg-emerald-500/10 text-emerald-500 text-[11px] font-mono px-1.5 py-0.5 rounded">
                       current
