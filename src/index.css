@@ -89,3 +89,135 @@ body {
 .animate-in {
   animation: fade-up 0.4s ease-out both;
 }
+
+/* ── Command Palette ── */
+@keyframes palette-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes palette-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.palette-enter {
+  animation: palette-in 0.15s ease-out both;
+}
+
+.palette-exit {
+  animation: palette-out 0.1s ease-in both;
+}
+
+.backdrop-enter {
+  animation: backdrop-in 0.15s ease-out both;
+}
+
+.backdrop-exit {
+  animation: backdrop-out 0.1s ease-in both;
+}
+
+/* ── Tab transitions ── */
+@keyframes tab-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tab-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tab-slide-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes tab-slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+.tab-enter-left {
+  animation: tab-slide-in-left 0.2s ease-out both;
+}
+
+.tab-enter-right {
+  animation: tab-slide-in-right 0.2s ease-out both;
+}
+
+.tab-exit-left {
+  animation: tab-slide-out-left 0.15s ease-in both;
+}
+
+.tab-exit-right {
+  animation: tab-slide-out-right 0.15s ease-in both;
+}
+
+/* ── Grain texture ── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+}

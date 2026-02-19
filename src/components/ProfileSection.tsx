@@ -11,9 +11,12 @@ import {
 import { useState } from "react";
 import ScheduleCall from "./ScheduleCall";
 
+import Footer from "./Footer";
+
 interface Props {
   isDark: boolean;
   onToggleTheme: () => void;
+  onOpenCommandPalette: () => void;
 }
 
 const socials = [
@@ -23,7 +26,7 @@ const socials = [
     label: "GitHub",
   },
   {
-    href: "mailto:007singhmanvendra@gmail.com",
+    href: "mailto:hello@manavsingh.in",
     icon: Mail,
     label: "Email",
   },
@@ -45,8 +48,13 @@ const stack = [
   { label: "languages", value: "JavaScript, Java, Python" },
 ];
 
-const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
+const ProfileSection = ({
+  isDark,
+  onToggleTheme,
+  onOpenCommandPalette,
+}: Props) => {
   const [copied, setCopied] = useState(false);
+  const [avatarError, setAvatarError] = useState(false);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -59,12 +67,12 @@ const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
       {/* Header */}
       <header className="flex justify-between items-center mb-8 animate-in">
         <div className="flex items-center gap-1.5">
-          <a
-            href="https://dev.manavsingh.in"
-            className="font-mono text-sm text-secondary hover:text-primary transition-colors"
+          <button
+            onClick={onOpenCommandPalette}
+            className="font-mono text-sm text-secondary hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-0"
           >
             dev.manavsingh.in
-          </a>
+          </button>
           <button
             onClick={() => copyToClipboard("dev.manavsingh.in")}
             className="p-1 text-muted hover:text-secondary transition-colors cursor-pointer"
@@ -75,6 +83,9 @@ const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
               <Copy className="w-3 h-3" />
             )}
           </button>
+          <span className="hidden sm:inline-flex items-center ml-1 px-1.5 py-0.5 rounded bg-raised border border-edge font-mono text-[10px] text-muted">
+            ⌘K
+          </span>
         </div>
         <button
           onClick={onToggleTheme}
@@ -86,14 +97,30 @@ const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
       </header>
 
       <main>
-        {/* Name + Title */}
+        {/* Name + Title with Avatar */}
         <div className="mb-6 animate-in" style={{ animationDelay: "50ms" }}>
-          <h1 className="text-4xl lg:text-5xl font-semibold text-primary tracking-tight">
-            Manav
-          </h1>
-          <p className="font-mono text-sm text-muted mt-1.5">
-            Full Stack Engineer
-          </p>
+          <div className="flex items-center gap-3 mb-1">
+            {avatarError ? (
+              <div className="w-12 h-12 rounded-full bg-raised border border-edge flex items-center justify-center shrink-0">
+                <span className="font-mono text-sm text-muted">M</span>
+              </div>
+            ) : (
+              <img
+                src="/avatar.jpg"
+                alt="Manav"
+                className="w-12 h-12 rounded-full object-cover border border-edge shrink-0"
+                onError={() => setAvatarError(true)}
+              />
+            )}
+            <div>
+              <h1 className="text-4xl lg:text-5xl font-semibold text-primary tracking-tight">
+                Manav
+              </h1>
+              <p className="font-mono text-sm text-muted mt-0.5">
+                Full Stack Engineer
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Status */}
@@ -113,7 +140,7 @@ const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
 
         {/* Bio */}
         <p
-          className="text-secondary leading-relaxed mb-8 animate-in"
+          className="text-secondary leading-relaxed mb-6 animate-in"
           style={{ animationDelay: "150ms" }}
         >
           I'm Manvendra Vikram Singh - I work across web, mobile, desktop,
@@ -179,6 +206,9 @@ const ProfileSection = ({ isDark, onToggleTheme }: Props) => {
             ))}
           </div>
         </div>
+
+        {/* Footer */}
+        <Footer />
       </main>
     </div>
   );
