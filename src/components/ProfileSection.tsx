@@ -101,19 +101,19 @@ const ProfileSection = ({
         <div className="mb-6 animate-in" style={{ animationDelay: "50ms" }}>
           <div className="flex items-center gap-3 mb-1">
             {avatarError ? (
-              <div className="w-12 h-12 rounded-full bg-raised border border-edge flex items-center justify-center shrink-0">
+              <div className="w-20 h-20 rounded-full bg-raised border border-edge flex items-center justify-center shrink-0">
                 <span className="font-mono text-sm text-muted">M</span>
               </div>
             ) : (
               <img
-                src="/avatar.jpg"
+                src="/manav.jpeg"
                 alt="Manav"
-                className="w-12 h-12 rounded-full object-cover border border-edge shrink-0"
+                className="w-20 h-20 rounded-full object-cover border border-edge shrink-0"
                 onError={() => setAvatarError(true)}
               />
             )}
             <div>
-              <h1 className="text-4xl lg:text-5xl font-semibold text-primary tracking-tight">
+              <h1 className="text-5xl lg:text-6xl font-semibold text-primary tracking-tight">
                 Manav
               </h1>
               <p className="font-mono text-sm text-muted mt-0.5">
