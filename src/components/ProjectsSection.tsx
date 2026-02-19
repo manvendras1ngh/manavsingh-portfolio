@@ -8,15 +8,13 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
         {projects.map((project, i) => (
           <article
             key={project.id}
-            className="group border border-edge rounded-lg p-5 bg-surface hover:border-muted transition-colors animate-in"
+            className="group border border-edge rounded-lg p-5 bg-surface hover:border-muted hover:shadow-sm hover:-translate-y-px transition-all duration-200 animate-in"
             style={{ animationDelay: `${i * 60}ms` }}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <div className="md:col-span-2">
                 <div className="flex items-baseline gap-3 mb-2">
-                  <h3 className="text-base font-semibold text-primary">
-                    {project.title}
-                  </h3>
+                  <h3 className="text-base font-semibold">{project.title}</h3>
                   <span className="font-mono text-xs text-muted">
                     {project.date}
                   </span>
@@ -83,11 +81,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                   )}
                 </div>
               </div>
-              <div className="md:col-span-1">
+              <div className="md:col-span-1 overflow-hidden rounded border border-edge">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-36 object-cover object-left rounded border border-edge"
+                  className="w-full h-36 object-cover object-left transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </div>
             </div>
