@@ -105,12 +105,14 @@ const ProfileSection = ({
                 <span className="font-mono text-sm text-muted">M</span>
               </div>
             ) : (
-              <img
-                src="/manav.jpeg"
-                alt="Manav"
-                className="w-20 h-20 rounded-full object-cover border border-edge shrink-0"
-                onError={() => setAvatarError(true)}
-              />
+              <div className="w-[88px] h-[88px] rounded-full overflow-hidden shrink-0">
+                <img
+                  src="/myavatar.png"
+                  alt="Manav"
+                  className="w-full h-full object-cover scale-[1.45]"
+                  onError={() => setAvatarError(true)}
+                />
+              </div>
             )}
             <div>
               <h1 className="text-5xl lg:text-6xl font-semibold text-primary tracking-tight">
